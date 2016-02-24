@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
   root 'project#index'
-
-  resources :projects, except: :edit, :update do
+# , except: :edit, :update
+  resources :projects do
     resources :pledges, only: [:create, :new]
     resources :awards, only: [:create, :new]
   end
 
   resources :users, except: :index
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
