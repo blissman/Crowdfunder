@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'project#index'
+  root 'projects#index'
 # , except: :edit, :update
   resources :projects do
     resources :pledges, only: [:create, :new]
