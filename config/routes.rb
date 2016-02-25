@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   root 'projects#index'
 # , except: :edit, :update
   resources :projects do
