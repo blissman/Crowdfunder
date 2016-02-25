@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'projects#index'
 
-  resources :user_sessions, only [:new, :create, :destroy]
+  resources :user_sessions, only: [:new, :create, :destroy]
   resources :users
 # , except: :edit, :update
   resources :projects do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: :index
-  
+
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
