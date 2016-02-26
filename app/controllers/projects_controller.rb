@@ -1,8 +1,20 @@
 class ProjectsController < ApplicationController
   skip_before_action :require_login, only: [:index]
-  
-  def index
-    @projects = Project.all
+
+def index
+    @projects = if params[:search]
+      Project.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      Project.all
+    end
+
+    @projects = @projects.order('projects.created_at DESC').page(params[:page])
+
+    respond_to do |format|
+    format.html
+    format.js
+  end
+
   end
 
   def new
